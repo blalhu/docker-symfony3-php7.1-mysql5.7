@@ -30,3 +30,11 @@ RUN apt-get update && apt-get install -y sudo \
 RUN useradd -mUG sudo developer && \
     echo 'developer:developer' | chpasswd && \
     chsh -s /bin/bash developer
+
+RUN sed -i -- 's/www-data/developer/g' /etc/php/7.1/fpm/pool.d/www.conf && \
+    sed -i -- 's/www-data/developer/g' /etc/nginx/nginx.conf
+
+COPY nginx/* /etc/nginx/sites-enabled/
+COPY entrypoint.sh /home/developer/
+
+CMD /home/developer/entrypoint.sh ; sleep infinity
