@@ -24,7 +24,6 @@ RUN apt-get update && apt-get install -y sudo \
     mysql-client \
     sqlite3 \
     postgresql-client \
-    git \
     mc
 
 RUN useradd -mUG sudo developer && \
