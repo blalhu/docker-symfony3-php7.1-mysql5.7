@@ -3,5 +3,7 @@
 !/entrypoint.sh
 !/nginx/
 !/nginx/*
+!/php/
+!/php/*
 !/LICENSE.MIT
 !/README.md

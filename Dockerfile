@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     php7.1-zip \
     php7.1-imagick \
     php7.1-gd \
+    php7.1-xdebug \
     nginx
 # useful stuff to work on the container
 RUN apt-get update && apt-get install -y sudo \
@@ -35,6 +36,7 @@ RUN sed -i -- 's/www-data/developer/g' /etc/php/7.1/fpm/pool.d/www.conf && \
     sed -i -- 's/www-data/developer/g' /etc/nginx/nginx.conf
 # add site configs for nginx (one for dev and one for prod mode)
 COPY nginx/* /etc/nginx/sites-enabled/
+COPY php/xdebug.ini /etc/php/7.1/mods-available/xdebug.ini
 # copy the shell script which will start the nginx and php-fpm services
 COPY entrypoint.sh /home/developer/
 # start services ; this script should never return
