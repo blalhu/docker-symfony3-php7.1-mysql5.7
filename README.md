@@ -16,7 +16,7 @@ $ docker run \
   -p 127.0.32.2:3281:8081 \
   -v /the/docroot/of/your/project:/home/developer/project \
   --name my_s4_project \
-  pelso/symfony4.0-php7.1:unstable
+  pelso/symfony4.0-php7.1
 ```
 
 For some cases (eg. clearing the cache) you should run a symfony command. You can use the php installed inside the container with the following mode:
@@ -27,7 +27,7 @@ $ cd /home/developer/project/
 
 If you prefer to use docker-compose, here's an [example](https://github.com/blalhu/docker-symfony-4.0-test-code/blob/master/docker/docker-compose.yml).
 
-#### <a name="configuring_the_services"></a>Configuring the services
+#### Configuring the services
 
 There's loads of parameters both in nginx and php, what you probably want to set or override. You can use a small trick here. When you mount a volume, you can also set a file to share. So at first you save the original configuration file from the container to your host machine, then extend/override it.  After this you just simply share this file with a -v option, or under the volume section in your docker-compose.yml file.
 
@@ -48,7 +48,7 @@ $ php -dxdebug.remote_autostart=On -dxdebug.remote_host=172.16.32.1 bin/console 
 ```
 The ip is the address of your docker network's gateway.
 
-Of course you can override these settings. Share your .ini to `/etc/php/7.1/mods-available/xdebug.ini`, just as you seen [above](#configuring_the_services). 
+Of course you can override these settings. Share your .ini to `/etc/php/7.1/mods-available/xdebug.ini`, just as you seen above. 
 
 ## Testing
 
