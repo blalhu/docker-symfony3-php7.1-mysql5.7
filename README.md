@@ -1,6 +1,6 @@
 ## Introduction
 
-The goal of this project is to provide an enviroment where you can develop your symfony4 projects under php7.1.
+The goal of this project is to provide an enviroment where you can develop your symfony3 projects under php7.1 with mysql 5.7.
 
 ## Usage
 
@@ -14,9 +14,10 @@ $ docker run \
   -d \
   -p 127.0.32.2:3280:8080 \
   -p 127.0.32.2:3281:8081 \
+  -p 127.0.32.3:3206:3306 \
   -v /the/docroot/of/your/project:/home/developer/project \
   --name my_s4_project \
-  pelso/symfony4.0-php7.1
+  pelso/symfony3-php7.1-mysql5.7
 ```
 
 For some cases (eg. clearing the cache) you should run a symfony command. You can use the php installed inside the container with the following mode:
