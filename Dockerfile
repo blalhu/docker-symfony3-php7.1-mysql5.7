@@ -15,7 +15,14 @@ RUN apt-get update && apt-get install -y \
     php7.1-imagick \
     php7.1-gd \
     php7.1-xdebug \
-    nginx
+    nginx \
+    debconf
+
+RUN 	export DEBIAN_FRONTEND=noninteractive \
+	&& echo "mysql-server mysql-server/root_password password root" | debconf-set-selections \
+	&& echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections \
+	&& apt-get update \
+	&& apt-get install -y mysql-server
 # useful stuff to work on the container
 RUN apt-get update && apt-get install -y sudo \
     htop \
